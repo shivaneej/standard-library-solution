@@ -1,0 +1,46 @@
+import java.util.*;
+import java.lang.Math;
+
+public class Main
+{
+    public static void main(String args[])
+    {
+       int n,k,num,i;
+       Scanner sc =  new Scanner(System.in);
+      
+       n=Integer.parseInt(sc.next());
+       k=Integer.parseInt(sc.next());
+        int input[]=new int[n];
+       for(i=0;i<n;i++)
+           input[i]=sc.nextInt();
+       num=((int) Math.pow(2,n))-1;
+       System.out.println(createSet(input,n,k));
+      
+       
+    }
+    public static int createSet(int s[],int n,int k)
+    {
+        int i,j,count=0,product;
+        Set subset = new HashSet();
+        for(i=0;i<(1<<n);i++)
+        {
+            product=1;
+            for(j=0;j<n;j++)
+            {    if((i&(1<<j))>0)
+                    subset.add(s[j]);  
+            }
+           Iterator x = subset.iterator();
+            while(x.hasNext())
+            {
+                int y = (int) x.next();
+                if(y!=0)
+                    product= product * y;
+            }
+            if(product<=k)
+                count++;
+            subset.clear();
+            //System.out.println(product);
+        }
+        return count-1;
+    } 
+}
