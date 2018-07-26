@@ -5,13 +5,14 @@ public class Main
 {
     public static void main(String args[])
     {
-       int n,j,i,x,k;
+        int n,i,j;
+       long x,k;
        Scanner sc =  new Scanner(System.in);
        n=Integer.parseInt(sc.next());
-       int arr[]=new int[n+1];
+       long arr[] = new long[1+n];
        for(i=1;i<=n;i++)
-           arr[i]=sc.nextInt();
-       int res[]=new int[n+1];
+           arr[i]=sc.nextLong();
+       long res[]=new long[n+1];
        for(i=1;i<=n;i++)
        {
            x=arr[1];
