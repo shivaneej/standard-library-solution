@@ -1,38 +1,29 @@
 import java.util.*;
-import java.lang.Math;
+import java.lang.*;
 
 public class Main
 {
     public static void main(String args[])
     {
-        int n,i,j;
-       long x,k;
-       Scanner sc =  new Scanner(System.in);
-       n=Integer.parseInt(sc.next());
-       long arr[] = new long[1+n];
-       for(i=1;i<=n;i++)
-           arr[i]=sc.nextLong();
-       long res[]=new long[n+1];
-       for(i=1;i<=n;i++)
-       {
-           x=arr[1];
-           k=-1;
-              
-           for(j=1;j<i;j++)
-           {
-             if(arr[j]>=x && arr[j]<arr[i])
-             {     x=arr[j];
-                 k=j;
-             }
-             
-           }
-           res[i]=k;
-       }
-       for(i=1;i<=n;i++)
-       System.out.println(res[i]);
-      
-       
+        int i,j,k,n;
+        Long x;
+        Scanner sc= new Scanner(System.in);
+        n=sc.nextInt();
+        Long arr[]=new Long[n];
+        Long res[]=new Long[n];
+        for(i=0;i<n;i++)
+            arr[i]=sc.nextLong();
+        TreeSet <Long> set = new TreeSet <Long> ();
+        for(i=0;i<n;i++)
+        {
+            x=set.lower(arr[i]);
+            if(x == null)
+                res[i]=(long)-1;
+            else
+            res[i]=x;
+            set.add(arr[i]);
+        }
+        for(i=0;i<n;i++)
+            System.out.println(res[i]);
     }
-   
-   
 }
