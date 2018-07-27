@@ -1,0 +1,68 @@
+import java.util.*;
+import java.lang.*;
+
+public class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        int n,m,i,max1=Integer.MIN_VALUE,max2=max1;
+        String CountryWinner=new String();
+        String ChefWinner=new String();
+        n=sc.nextInt();
+        m=sc.nextInt();
+        HashMap <String,String> map = new HashMap<>();
+        HashMap <String,Integer> country = new HashMap<>();
+        HashMap <String,Integer> chef = new HashMap<>();
+        for(i=0;i<n;i++)
+            map.put(sc.next(),sc.next());
+        for(i=0;i<m;i++)
+        {
+            String ip=sc.next();
+            String ctry=map.get(ip);
+            if(!chef.containsKey(ip))
+                chef.put(ip,1);
+            else
+                chef.put(ip,chef.get(ip)+1);
+            if(!country.containsKey(ctry))
+                country.put(ctry,1);
+            else
+                country.put(ctry,country.get(ctry)+1);
+        }
+        
+        Set<String> countrySet = country.keySet();
+        for (String y:countrySet) 
+        {
+            if (country.get(y)>max1) 
+            {
+                CountryWinner=y;
+                max1=country.get(y);
+            } 
+            else if (country.get(y)==max1) 
+                if (y.compareTo(CountryWinner)<0) 
+                    CountryWinner=y;
+        }
+        
+ 
+        Set<String> nameSet = chef.keySet();
+        for (String y : nameSet) 
+        {
+            if (chef.get(y)>max2) 
+            {
+                ChefWinner=y;
+                max2= chef.get(y);
+            } 
+            else if (chef.get(y) == max2) 
+                if (y.compareTo(ChefWinner)<0) 
+                    ChefWinner = y;
+                
+        }
+        
+        System.out.println(CountryWinner);
+        System.out.println(ChefWinner);
+        
+    }      
+        
+        
+    
+}
