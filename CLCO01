@@ -1,0 +1,56 @@
+import java.util.*;
+import java.lang.*;
+
+public class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        int t,n,i,j,x;
+        t=sc.nextInt();
+        String path,command;
+        ArrayList <String> soln=new ArrayList<>();
+        for(i=0;i<t;i++)
+        {
+          ArrayDeque <String> q=new ArrayDeque<>();
+          n=sc.nextInt();
+          for(j=0;j<=n;j++)
+          {
+              command=sc.nextLine();
+              if(command.equals("pwd"))
+              {
+                  String op="/";
+                  Iterator it=q.iterator();
+                  while(it.hasNext())
+                      op=op+it.next()+"/";
+                  soln.add(op);
+              }
+              else if(command.startsWith("cd"))
+              {
+                  if(command.charAt(3)=='/')
+                  {   if(!q.isEmpty())
+                        q.clear();
+                       path=command.substring(4);
+                  }
+                  else
+                    path=command.substring(3);
+                  String arr[]=path.split("/");
+                  for(x=0;x<arr.length;x++)
+                  {
+                      String idk="..";
+                      if((arr[x]).equals(idk))
+                          q.pollLast();
+                      else
+                      q.add(arr[x]);
+                  }
+              }
+                  
+          }
+          for(String temp:soln)
+              System.out.println(temp);
+          
+        }
+        
+        
+    }
+}
