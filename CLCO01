@@ -37,8 +37,7 @@ public class Main
                   String arr[]=path.split("/");
                   for(x=0;x<arr.length;x++)
                   {
-                      String idk="..";
-                      if((arr[x]).equals(idk))
+                      if((arr[x]).equals(".."))
                           q.pollLast();
                       else
                       q.add(arr[x]);
