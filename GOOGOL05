@@ -1,0 +1,25 @@
+import java.io.*;
+import java.util.*;
+ 
+class Main
+{   
+    public static void main(String args[])
+    {
+        int n,i;
+        Scanner sc= new Scanner(System.in);
+        n=sc.nextInt();
+        TreeMap <String,Integer> ip=new TreeMap<>();
+        String temp=sc.nextLine();
+        for(i=0;i<n;i++)
+        {
+            String x=sc.nextLine();
+            if(ip.containsKey(x))
+                ip.put(x,ip.get(x)+1);
+            else
+                ip.put(x,1);
+        }
+        for(Map.Entry m:ip.entrySet())
+           System.out.println(m.getKey()+" "+m.getValue());
+        
+    }
+} 
